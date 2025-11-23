@@ -1,0 +1,20 @@
+@model IEnumerable<SafeVault.Web.Data.FinancialRecord>
+@{
+    ViewData["Title"] = "My Records";
+}
+<h2>My Records</h2>
+<table class="table">
+    <thead><tr><th>Date</th><th>Account</th><th>Amount</th><th>Currency</th><th>Notes</th></tr></thead>
+    <tbody>
+    @foreach (var r in Model)
+    {
+        <tr>
+            <td>@r.CreatedUtc</td>
+            <td>@r.MaskedAccountNumber</td>
+            <td>@r.Amount</td>
+            <td>@r.Currency</td>
+            <td>@r.NotesSanitized</td> <!-- Razor encodes -->
+        </tr>
+    }
+    </tbody>
+</table>
